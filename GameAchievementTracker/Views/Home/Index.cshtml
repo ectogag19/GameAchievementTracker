@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Game Hub";
+}
+
+<div class="hero-banner">
+    <img src="~/images/banner.jpg" alt="Hero Banner" class="hero-image" />
+    <div class="hero-text">
+        <h1>Welcome to GameAchievementTracker</h1>
+        <p>Track your gaming glory, one achievement at a time.</p>
+    </div>
+</div>
+
+<section class="game-gallery">
+    <h2>Featured Games</h2>
+    <div class="games-container">
+        <div class="game-card">
+            <img src="~/images/witcher-3-logo.png" alt="Witcher 3" />
+            <button onclick="playClick()">View</button>
+        </div>
+        <div class="game-card">
+            <img src="~/images/stardew-logo.png" alt="Stardew Valley" />
+            <button onclick="playClick()">View</button>
+        </div>
+        <div class="game-card">
+            <img src="~/images/crash-4-logo.png" alt="Crash Bandicoot 4 It's About Time" />
+            <button onclick="playClick()">View</button>
+        </div>
+        <div class="game-card">
+            <img src="~/images/dbfz-logo.png" alt="Dragonball FighterZ" />
+            <button onclick="playClick()">View</button>
+        </div>
+        <div class="game-card">
+            <img src="~/images/destiny-logo.png" alt="Destiny" />
+            <button onclick="playClick()">View</button>
+        </div>
+    </div>
+</section>
+
+<audio id="click-sound" src="~/images/mixkit-sci-fi-click-900.wav" preload="auto"></audio>
+
+@section Scripts {
+    <script>
+        function playClick() {
+            const audio = document.getElementById('click-sound');
+            audio.currentTime = 0;
+            audio.play();
+        }
+
+        // Smooth fade transition
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.classList.add('fade-in');
+        });
+
+        window.addEventListener("beforeunload", function () {
+            document.body.classList.remove('fade-in');
+        });
+    </script>
+}

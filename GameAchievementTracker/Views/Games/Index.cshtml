@@ -1,0 +1,22 @@
+@model IEnumerable<GameAchievementTracker.Models.Game>
+
+<h2 class="text-warning">Games</h2>
+
+<div class="mb-4">
+    <a asp-action="Create" class="btn btn-success">+ Add New Game</a>
+</div>
+
+<div class="row">
+    @foreach (var game in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@game.Title</h5>
+                    <p class="card-text">@game.Description</p>
+                    <a href="/Games/Details/@game.Id" class="btn btn-warning">View Achievements</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

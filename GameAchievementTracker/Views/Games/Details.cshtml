@@ -1,0 +1,36 @@
+@model GameAchievementTracker.Models.Game
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h1>@Model.Title</h1>
+<p>@Model.Description</p>
+
+<h2>Achievements</h2>
+
+@if (Model.Achievements.Any())
+{
+    <ul>
+        @foreach (var achievement in Model.Achievements)
+        {
+            <li>
+                <a asp-controller="Achievements" asp-action="Details" asp-route-id="@achievement.Id">
+                    @achievement.Title
+                </a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No achievements found for this game.</p>
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <a asp-controller="Achievements" asp-action="Create" asp-route-gameId="@Model.Id"
+       class="btn btn-warning mt-4 px-4 py-2 fw-bold shadow-sm border-2 border-dark rounded-pill text-uppercase">
+        🎯 Add New Achievement
+    </a>
+}
