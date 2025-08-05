@@ -8,7 +8,7 @@ namespace GameAchievementTracker.Models
         public string ImageUrl { get; set; }
         
         public string? UserId { get; set; }
-        public ApplicationUser User { get; set; }
+        public ApplicationUser? User { get; set; }
         
         public ICollection<Achievement> Achievements { get; set; } = new List<Achievement>();
     }

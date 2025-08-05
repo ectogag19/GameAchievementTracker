@@ -22,6 +22,12 @@ namespace GameAchievementTracker.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return View(new List<Game>());
+            }
+
             var games = await _context.Games
                 .Where(g => g.UserId == user.Id)
                 .ToListAsync();
@@ -52,7 +58,6 @@ namespace GameAchievementTracker.Controllers
         
         [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Game game)
         {
             var user = await _userManager.GetUserAsync(User);
