@@ -21,10 +21,11 @@
                 <img src="@game.ImageUrl" alt="@game.Title" />
                 <a asp-controller="Games" asp-action="Details" asp-route-id="@game.Id"
                    class="btn btn-primary mt-2" onclick="playClick()">View</a>
-            </div>
+            </div> 
+                
         }
     </div>
-</section>
+</section> 
 
 <audio id="click-sound" src="~/images/mixkit-sci-fi-click-900.wav" preload="auto"></audio>
 

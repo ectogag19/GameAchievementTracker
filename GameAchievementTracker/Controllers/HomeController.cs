@@ -17,11 +17,11 @@ namespace GameAchievementTracker.Controllers
         public IActionResult Index()
         {
             var games = _context.Games
-                .OrderByDescending(g => g.Id)  // or some date property if you have one
+                .Where(g => g.Id == null)
+                .OrderByDescending(g => g.Id)
                 .Take(3)
                 .ToList();
             return View(games);
         }
-
     }
 }
