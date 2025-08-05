@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<GameAchievementTracker.Models.Game>
+
+@{
     ViewData["Title"] = "Game Hub";
 }
 
@@ -11,28 +13,16 @@
 </div>
 
 <section class="game-gallery">
-    <h2>Featured Games</h2>
+    <h2>Games</h2>
     <div class="games-container">
-        <div class="game-card">
-            <img src="~/images/witcher-3-logo.png" alt="Witcher 3" />
-            <button onclick="playClick()">View</button>
-        </div>
-        <div class="game-card">
-            <img src="~/images/stardew-logo.png" alt="Stardew Valley" />
-            <button onclick="playClick()">View</button>
-        </div>
-        <div class="game-card">
-            <img src="~/images/crash-4-logo.png" alt="Crash Bandicoot 4 It's About Time" />
-            <button onclick="playClick()">View</button>
-        </div>
-        <div class="game-card">
-            <img src="~/images/dbfz-logo.png" alt="Dragonball FighterZ" />
-            <button onclick="playClick()">View</button>
-        </div>
-        <div class="game-card">
-            <img src="~/images/destiny-logo.png" alt="Destiny" />
-            <button onclick="playClick()">View</button>
-        </div>
+        @foreach (var game in Model)
+        {
+            <div class="game-card">
+                <img src="@game.ImageUrl" alt="@game.Title" />
+                <a asp-controller="Games" asp-action="Details" asp-route-id="@game.Id"
+                   class="btn btn-primary mt-2" onclick="playClick()">View</a>
+            </div>
+        }
     </div>
 </section>
 
@@ -45,8 +35,7 @@
             audio.currentTime = 0;
             audio.play();
         }
-
-        // Smooth fade transition
+        
         document.addEventListener("DOMContentLoaded", function () {
             document.body.classList.add('fade-in');
         });

@@ -15,7 +15,7 @@ namespace GameAchievementTracker.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.19");
 
             modelBuilder.Entity("GameAchievementTracker.Models.Achievement", b =>
                 {
@@ -115,11 +115,20 @@ namespace GameAchievementTracker.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Games");
                 });
@@ -290,6 +299,15 @@ namespace GameAchievementTracker.Migrations
                         .IsRequired();
 
                     b.Navigation("Game");
+                });
+
+            modelBuilder.Entity("GameAchievementTracker.Models.Game", b =>
+                {
+                    b.HasOne("GameAchievementTracker.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("GameAchievementTracker.Models.UserAchievement", b =>

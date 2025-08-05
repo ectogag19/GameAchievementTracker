@@ -9,8 +9,8 @@ namespace GameAchievementTracker.Models
         [Required]
         public string Title { get; set; }
         public string Description { get; set; }
-        [Required]
+        
         public int GameId { get; set; }
-        public Game Game { get; set; }
+        public Game? Game { get; set; }
     }
 }
