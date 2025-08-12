@@ -19,6 +19,8 @@
         {
             <div class="game-card">
                 <img src="@game.ImageUrl" alt="@game.Title" />
+                <h3>@game.Title</h3>
+                <p>@game.Description</p>
                 <a asp-controller="Games" asp-action="Details" asp-route-id="@game.Id"
                    class="btn btn-primary mt-2" onclick="playClick()">View</a>
             </div> 
