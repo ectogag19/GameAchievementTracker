@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameAchievementTracker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b787d836b86f86c326b5c41ab39899a1b55ee7c8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f865290375f932104bc1ed93a99f317610bfd41a")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameAchievementTracker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameAchievementTracker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
