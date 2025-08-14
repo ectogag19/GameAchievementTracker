@@ -44,6 +44,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.13.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.Cookies": {
               "target": "Package",
               "version": "[2.3.0, )"
@@ -73,6 +77,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.7, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.13.0, )"
             }
           },
           "imports": [

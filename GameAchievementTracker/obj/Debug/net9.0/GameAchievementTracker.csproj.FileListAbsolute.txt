@@ -403,3 +403,6 @@
 /Users/georgegarcia/Desktop/repos/GameAchievementTracker/GameAchievementTracker/obj/Debug/net9.0/GameAchievementTracker.pdb
 /Users/georgegarcia/Desktop/repos/GameAchievementTracker/GameAchievementTracker/obj/Debug/net9.0/GameAchievementTracker.genruntimeconfig.cache
 /Users/georgegarcia/Desktop/repos/GameAchievementTracker/GameAchievementTracker/obj/Debug/net9.0/ref/GameAchievementTracker.dll
+/Users/georgegarcia/Desktop/repos/GameAchievementTracker/GameAchievementTracker/bin/Debug/net9.0/BouncyCastle.Cryptography.dll
+/Users/georgegarcia/Desktop/repos/GameAchievementTracker/GameAchievementTracker/bin/Debug/net9.0/MailKit.dll
+/Users/georgegarcia/Desktop/repos/GameAchievementTracker/GameAchievementTracker/bin/Debug/net9.0/MimeKit.dll
