@@ -1,3 +1,5 @@
+<img width="1433" height="691" alt="Screenshot 2025-08-14 at 6 42 43 PM" src="https://github.com/user-attachments/assets/ea247ea8-29e8-4412-99f2-c48ce5d82e1d" />
+
 # 🎮 Game Achievement Tracker  
 
 A web application built with **ASP.NET Core MVC** that allows users to track games they own and the achievements they’ve earned.  
