@@ -1,0 +1,28 @@
+@model GameAchievementTracker.Models.Achievement
+
+@{
+    ViewData["Title"] = Model.Title;
+    bool earned = (bool)ViewData["Earned"];
+}
+
+<h1>@Model.Title</h1>
+<p><strong>Game:</strong> @Model.Game.Title</p>
+<p>@Model.Description</p>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (earned)
+    {
+        <p><strong>You have earned this achievement!</strong></p>
+    }
+    else
+    {
+        <form method="post" asp-action="Earn" asp-route-id="@Model.Id">
+            <button type="submit">Mark as Earned</button>
+        </form>
+    }
+}
+else
+{
+    <p><a href="/Identity/Account/Login">Login</a> to mark this achievement as earned.</p>
+}

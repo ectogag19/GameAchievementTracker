@@ -1,0 +1,50 @@
+﻿@model IEnumerable<GameAchievementTracker.Models.Game>
+
+@{
+    ViewData["Title"] = "Game Hub";
+}
+
+<div class="hero-banner">
+    <img src="~/images/banner.jpg" alt="Hero Banner" class="hero-image" />
+    <div class="hero-text">
+        <h1>Welcome to GameAchievementTracker</h1>
+        <p>Track your gaming glory, one achievement at a time.</p>
+    </div>
+</div>
+
+<section class="game-gallery">
+    <h2>Games</h2>
+    <div class="games-container">
+        @foreach (var game in Model)
+        {
+            <div class="game-card">
+                <img src="@game.ImageUrl" alt="@game.Title" />
+                <h3>@game.Title</h3>
+                <p>@game.Description</p>
+                <a asp-controller="Games" asp-action="Details" asp-route-id="@game.Id"
+                   class="btn btn-primary mt-2" onclick="playClick()">View</a>
+            </div> 
+                
+        }
+    </div>
+</section> 
+
+<audio id="click-sound" src="~/images/mixkit-sci-fi-click-900.wav" preload="auto"></audio>
+
+@section Scripts {
+    <script>
+        function playClick() {
+            const audio = document.getElementById('click-sound');
+            audio.currentTime = 0;
+            audio.play();
+        }
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.classList.add('fade-in');
+        });
+
+        window.addEventListener("beforeunload", function () {
+            document.body.classList.remove('fade-in');
+        });
+    </script>
+}

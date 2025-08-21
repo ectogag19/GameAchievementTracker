@@ -1,0 +1,48 @@
+@model GameAchievementTracker.Models.Game
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container mt-4">
+    <h2 class="text-primary">@Model.Title</h2>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <img src="@Model.ImageUrl" alt="@Model.Title Logo" class="img-fluid rounded border" />
+        </div>
+        <div class="col-md-8">
+            <h4>Description</h4>
+            <p>@Model.Description</p>
+
+            <a asp-controller="Achievements" asp-action="Create" asp-route-gameId="@Model.Id" class="btn btn-success mt-2">
+                🎯 Add an Achievement
+            </a>
+            <a asp-action="Index" class="btn btn-secondary mt-2">Back to Games</a>
+        </div>
+    </div>
+
+    <hr />
+
+    <h3 class="text-warning">Achievements</h3>
+
+    @if (Model.Achievements != null && Model.Achievements.Any())
+    {
+        <ul class="list-group">
+            @foreach (var achievement in Model.Achievements)
+            {
+                <li class="list-group-item">
+                    <strong>@achievement.Title</strong><br />
+                    <span>@achievement.Description</span><br />
+
+                    <a asp-controller="Achievements" asp-action="Edit" asp-route-id="@achievement.Id" class="btn btn-sm btn-outline-primary mt-2">Edit</a>
+                    <a asp-controller="Achievements" asp-action="Delete" asp-route-id="@achievement.Id" class="btn btn-sm btn-outline-danger mt-2">Delete</a>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p class="text-muted">No achievements added for this game yet.</p>
+    }
+</div>

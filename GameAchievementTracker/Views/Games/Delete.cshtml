@@ -1,0 +1,19 @@
+@model GameAchievementTracker.Models.Game
+
+@{
+    ViewData["Title"] = "Delete Game";
+}
+
+<h2 class="text-danger">Delete Game</h2>
+
+<h4>Are you sure you want to delete this game?</h4>
+<div class="mb-3">
+    <strong>Title:</strong> @Model.Title<br />
+    <strong>Description:</strong> @Model.Description
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

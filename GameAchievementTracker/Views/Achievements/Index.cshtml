@@ -1,0 +1,31 @@
+@model IEnumerable<GameAchievementTracker.Models.Achievement>
+
+@{
+    ViewData["Title"] = "Achievements";
+}
+
+<h1>Achievements</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Game</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var achievement in Model)
+    {
+        <tr>
+            <td>@achievement.Title</td>
+            <td>@achievement.Description</td>
+            <td>@achievement.Game?.Title</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@achievement.Id">View</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
