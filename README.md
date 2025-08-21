@@ -1,4 +1,5 @@
-<img width="1433" height="691" alt="Screenshot 2025-08-14 at 6 42 43 PM" src="https://github.com/user-attachments/assets/ea247ea8-29e8-4412-99f2-c48ce5d82e1d" />
+<img width="1433" height="691" alt="Screenshot 2025-08-14 at 6 42 43 PM" src="https://github.com/user-attachments/assets/82d43f99-b0e1-4e9c-8b0a-351c341d4ec8" />
+
 
 # 🎮 Game Achievement Tracker  
 
