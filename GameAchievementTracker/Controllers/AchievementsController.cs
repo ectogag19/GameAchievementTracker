@@ -71,10 +71,19 @@ namespace GameAchievementTracker.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var achievements = await _context.Achievements
-                .Include(a => a.Game)
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account"); 
+            }
+
+            var userAchievements = await _context.UserAchievements
+                .Where(ua => ua.UserId == user.Id)
+                .Include(ua => ua.Achievement)
+                .ThenInclude(a => a.Game)
                 .ToListAsync();
-            return View(achievements);
+
+            return View(userAchievements);
         }
         
         [Authorize]

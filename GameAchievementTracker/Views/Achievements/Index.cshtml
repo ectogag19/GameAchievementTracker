@@ -1,31 +1,40 @@
-@model IEnumerable<GameAchievementTracker.Models.Achievement>
+@model IEnumerable<GameAchievementTracker.Models.UserAchievement>
 
 @{
-    ViewData["Title"] = "Achievements";
+    ViewData["Title"] = "Your Achievements";
 }
 
-<h1>Achievements</h1>
+<h1>Your Achievements</h1>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Game</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var achievement in Model)
-    {
+@if (!Model.Any())
+{
+    <p>You haven’t unlocked any achievements yet.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
         <tr>
-            <td>@achievement.Title</td>
-            <td>@achievement.Description</td>
-            <td>@achievement.Game?.Title</td>
-            <td>
-                <a asp-action="Details" asp-route-id="@achievement.Id">View</a>
-            </td>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Game</th>
+            <th>Date Earned</th>
+            <th></th>
         </tr>
-    }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        @foreach (var ua in Model)
+        {
+            <tr>
+                <td>@ua.Achievement.Title</td>
+                <td>@ua.Achievement.Description</td>
+                <td>@ua.Achievement.Game?.Title</td>
+                <td>@ua.DateEarned.ToString("g")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@ua.Achievement.Id">View</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
