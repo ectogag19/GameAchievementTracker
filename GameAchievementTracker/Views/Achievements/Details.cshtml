@@ -13,16 +13,16 @@
 {
     if (earned)
     {
-        <p><strong>You have earned this achievement!</strong></p>
+        <p class="text-success"><strong>✅ You have earned this achievement!</strong></p>
     }
     else
     {
         <form method="post" asp-action="Earn" asp-route-id="@Model.Id">
-            <button type="submit">Mark as Earned</button>
+            <button type="submit" class="btn btn-success">Mark as Earned</button>
         </form>
     }
 }
 else
 {
-    <p><a href="/Identity/Account/Login">Login</a> to mark this achievement as earned.</p>
+    <p><a class="btn btn-primary" href="/Identity/Account/Login">Login</a> to mark this achievement as earned.</p>
 }

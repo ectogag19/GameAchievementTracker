@@ -1,7 +1,8 @@
-@model IEnumerable<GameAchievementTracker.Models.UserAchievement>
+@model IEnumerable<GameAchievementTracker.Models.Achievement>
 
 @{
-    ViewData["Title"] = "Your Achievements";
+    ViewData["Title"] = "Achievements";
+    var earnedIds = ViewData["EarnedIds"] as List<int> ?? new List<int>();
 }
 
 <h1>Your Achievements</h1>
@@ -18,20 +19,34 @@ else
             <th>Title</th>
             <th>Description</th>
             <th>Game</th>
-            <th>Date Earned</th>
-            <th></th>
+            <th>Status</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        @foreach (var ua in Model)
+        @foreach (var achievement in Model)
         {
             <tr>
-                <td>@ua.Achievement.Title</td>
-                <td>@ua.Achievement.Description</td>
-                <td>@ua.Achievement.Game?.Title</td>
-                <td>@ua.DateEarned.ToString("g")</td>
+                <td>@achievement.Title</td>
+                <td>@achievement.Description</td>
+                <td>@achievement.Game?.Title</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@ua.Achievement.Id">View</a>
+                    @if (earnedIds.Contains(achievement.Id))
+                    {
+                        <span class="text-success">✅ Earned</span>
+                    }
+                    else
+                    {
+                        <span class="text-muted">Not earned</span>
+                    }
+                </td>
+                <td>
+                    @if (!earnedIds.Contains(achievement.Id))
+                    {
+                        <form method="post" asp-action="Earn" asp-route-id="@achievement.Id">
+                            <button type="submit">Mark as Earned</button>
+                        </form>
+                    }
                 </td>
             </tr>
         }

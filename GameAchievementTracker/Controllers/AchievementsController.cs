@@ -68,22 +68,26 @@ namespace GameAchievementTracker.Controllers
             return RedirectToAction("Details", new { id });
         }
         
-        [AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
-            {
-                return RedirectToAction("Login", "Account"); 
-            }
-
-            var userAchievements = await _context.UserAchievements
-                .Where(ua => ua.UserId == user.Id)
-                .Include(ua => ua.Achievement)
-                .ThenInclude(a => a.Game)
+                return Challenge();
+            
+            var achievements = await _context.Achievements
+                .Include(a => a.Game)
+                .Where(a => a.Game.UserId == user.Id)
                 .ToListAsync();
+            
+            var earnedIds = await _context.UserAchievements
+                .Where(ua => ua.UserId == user.Id)
+                .Select(ua => ua.AchievementId)
+                .ToListAsync();
+            
+            ViewData["EarnedIds"] = earnedIds;
 
-            return View(userAchievements);
+            return View(achievements);
         }
         
         [Authorize]
